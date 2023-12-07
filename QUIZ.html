@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+.container {
+  text-align: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+</style>
+</head>
+<body>
+
+<div id="startPage" class="container">
+  <h2>Bem-vindo/a ao Quiz sobre Moda Sustentável 👗👠👜</h2>
+  <button onclick="startQuiz()">Começar</button>
+</div>
+
+<div id="quizPage" class="container" style="display: none;">
+  <h2>O que sabe sobre a moda sustentável? 🌿👕</h2>
+  <form id="quizForm">
+    <input type="radio" id="choice1" name="sustainable_fashion" value="choice1" required>
+    <label for="choice1">A moda sustentável consiste em reutilizar as roupas</label><br>
+    <input type="radio" id="choice2" name="sustainable_fashion" value="choice2" required>
+    <label for="choice2">É uma moda que consiste em comprar sem reutilizar nada</label><br>
+    <button type="submit">Submeter</button>
+  </form>
+</div>
+
+<div id="endPage" class="container" style="display: none;">
+  <h2 id="resultText"></h2>
+</div>
+
+<script>
+function startQuiz() {
+  document.getElementById('startPage').style.display = 'none';
+  document.getElementById('quizPage').style.display = 'block';
+}
+
+document.querySelector('#quizForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // para evitar o recarregamento da página
+
+  var data = new FormData(event.target); // cria um objeto FormData a partir do formulário
+
+  var resultText = document.getElementById('resultText');
+  if (data.get('sustainable_fashion') === 'choice1') {
+    resultText.textContent = 'Parabéns, você acertou! Obrigado por participar 🎉';
+  } else {
+    resultText.textContent = 'Infelizmente, você errou. Obrigado por participar 😞';
+  }
+
+  document.getElementById('quizPage').style.display = 'none';
+  document.getElementById('endPage').style.display = 'block';
+});
+</script>
+git remote add origin https://github.com/tigui-oficial/tigui-oficial.git
+  git branch -M main
+  git push -u origin main
+</body>
+</html>
